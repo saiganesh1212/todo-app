@@ -6,7 +6,6 @@ from sqlalchemy import Column,Integer,String,Float,Boolean,DateTime
 
 
 app=Flask(__name__)
-port = int(os.environ.get('PORT', 5000))
 basedir=os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(basedir,'todo.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -85,6 +84,4 @@ def update_todo(id):
     db.session.commit()
     return redirect(url_for('index'))
 
-if __name__=='__main__':
-    app.run(host='0.0.0.0', port=port, debug=True)
 
